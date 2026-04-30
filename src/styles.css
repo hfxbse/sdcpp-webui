@@ -507,13 +507,13 @@ button {
     min-width: 0;
 }
 
-.module-card > .advanced-group__toggle {
+.module-card>.advanced-group__toggle {
     padding: 16px;
     align-items: flex-start;
     background: linear-gradient(180deg, rgba(249, 250, 251, 0.9), rgba(255, 255, 255, 1));
 }
 
-.module-card > .advanced-group__content {
+.module-card>.advanced-group__content {
     gap: 16px;
     padding: 16px;
     background: #fff;
@@ -756,7 +756,7 @@ button {
     width: 100%;
 }
 
-.output-controls__secondary > * {
+.output-controls__secondary>* {
     width: 100%;
     justify-content: center;
 }
@@ -842,7 +842,7 @@ button {
     letter-spacing: 0.06em;
 }
 
-.list-row > * {
+.list-row>* {
     min-width: 0;
 }
 
@@ -953,5 +953,103 @@ button {
     .hero-frame {
         min-height: 280px;
         max-height: 420px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg: #0b0e14;
+            --panel: #161b22;
+            --panel-subtle: hsl(215,21.4%,12%);
+            --text: #f0f6fc;
+            --muted: #8b949e;
+            --border: #30363d;
+            --border-strong: #484f58;
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            --chip-bg: #21262d;
+            --primary: #f0f6fc;
+            --primary-soft: #2d333b;
+            --success: #3fb950;
+            --warning: #d29922;
+            --danger: #f85149;
+
+            /* Update checkerboard for dark mode visibility */
+            --checker-bg:
+                linear-gradient(45deg, #21262d 25%, transparent 25%),
+                linear-gradient(-45deg, #21262d 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #21262d 75%),
+                linear-gradient(-45deg, transparent 75%, #21262d 75%),
+                #161b22;
+        }
+
+        /* Override hardcoded white backgrounds in components */
+        .btn,
+        .btn-secondary,
+        .btn-ghost,
+        .btn-danger,
+        .prompt-card,
+        .advanced-panel,
+        .metric,
+        .upload-card,
+        .status-message,
+        .file-chip,
+        .advanced-group.module-card,
+        .module-card>.advanced-group__content,
+        :is(.field, .field--full, .group) :is(input, select, textarea),
+        .settings input {
+            background-color: var(--panel);
+            color: var(--text);
+        }
+
+        /* Adjust specific buttons and states */
+        .btn {
+            background: var(--primary);
+            color: #0b0e14;
+            /* Dark text on light primary button */
+        }
+
+        .page-tab--active {
+            color: #000;
+        }
+
+        .btn:hover {
+            background: #e6edf3;
+        }
+
+        .btn-secondary {
+            background: var(--primary-soft);
+        }
+
+        .btn-danger {
+            border-color: #f85149;
+            background: transparent;
+        }
+
+        /* Lighten specific borders for better contrast */
+        .breadcrumb__slash {
+            color: var(--muted);
+        }
+
+        /* Status message backgrounds */
+        .status-message--error {
+            background: rgba(248, 81, 73, 0.1);
+        }
+
+        .status-message--success {
+            background: rgba(63, 185, 80, 0.1);
+        }
+
+        /* Input focus states */
+        :is(.field, .field--full, .group) :is(input, select, textarea):focus,
+        .settings input:focus {
+            border-color: var(--muted);
+            box-shadow: 0 0 0 3px rgba(240, 246, 252, 0.1);
+        }
+
+        /* Module card header gradients */
+        .module-card>.advanced-group__toggle {
+            background: linear-gradient(180deg, var(--panel-subtle), var(--panel));
+        }
     }
 }
